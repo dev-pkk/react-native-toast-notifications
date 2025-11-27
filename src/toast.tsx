@@ -12,8 +12,8 @@ import {
   PanResponderInstance,
   PanResponderGestureState,
   Platform,
+  useWindowDimensions,
 } from "react-native";
-import { useDimensions } from "./utils/useDimensions";
 
 export interface ToastOptions {
   /**
@@ -153,7 +153,7 @@ const Toast: FC<ToastProps> = (props) => {
   const panResponderRef = useRef<PanResponderInstance>();
   const panResponderAnimRef = useRef<Animated.ValueXY>();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const dims = useDimensions();
+  const dims = useWindowDimensions();
 
   useEffect(() => {
     Animated.timing(animation, {
